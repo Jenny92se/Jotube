@@ -45,3 +45,13 @@ use "npm start" instead of using "node index.js"
 ## pug
 
 - make html look more beautiful than normal
+
+- app.set("view engine", "pug");
+  // default view localtion is set to ./views
+
+#code align
+
+- shift + tab : outdent
+
+# 
+https://fontawesome.com/
