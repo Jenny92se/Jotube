@@ -30,3 +30,18 @@ use "npm start" instead of using "node index.js"
 ##morgan
 
 - logging middleware
+
+## MVC
+
+- module : data : database
+- view : how doese the data look
+- controller : function that looks for the data
+
+## arrow function
+
+- () => true; // implicitly return
+- () => { return trun; } // if use {}, should write explicitly return
+
+## pug
+
+- make html look more beautiful than normal
