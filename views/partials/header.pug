@@ -4,8 +4,21 @@ header.header
             i.fab.fa-youtube
         //same with <i class="fab fa-youtube"></i>
     .header__column
+        form(action=routes.search,method="get")
+            input(type="text", placeholder="search by term...", name="term")
+    .header__column
         ul
-            li
-                a(href=routes.join) Join
-            li
-                a(href=routes.login) Log In
+            if !user.isAuthenticated
+                li
+                    a(href=routes.join) Join
+                li
+                    a(href=routes.login) Log In
+            else
+                li
+                    a(href=routes.upload) Upload
+                li
+                    a(href=routes.userDetail(user.id)) profile
+                li
+                    a(href=routes.logout) Log out
+                
+                

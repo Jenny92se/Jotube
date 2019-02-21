@@ -1,5 +1,18 @@
 # Jotube
 
+## pages
+
+- [] Home
+- [] join
+- [] login
+- [] search
+- [] user detail
+- [] change profile
+- [] edit profile
+- [] upload
+- [] video detail
+- [] edit video
+
 Cloning Youtube
 
 ## package.json
@@ -49,9 +62,39 @@ use "npm start" instead of using "node index.js"
 - app.set("view engine", "pug");
   // default view localtion is set to ./views
 
-#code align
+##code align
 
 - shift + tab : outdent
 
-# 
-https://fontawesome.com/
+##
+
+- icon site
+  https://fontawesome.com/
+
+- html video demo
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+
+- html audio demo
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+
+##
+
+```
+
+const searchingBy=req.query.term;
+
+{} = req
+{query} = req.query
+{query: {term}} =req.query.term
+=> do explicit inside req object
+{
+  query:{
+     term: searchingBy // rename term
+     }
+ }
+const {
+        query: {
+            term: searchingBy
+        }
+    } = req;
+```
