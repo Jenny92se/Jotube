@@ -6,9 +6,7 @@ import {
 } from "../controllers/videoController";
 
 import {
-    login,
     logout,
-    join,
     postJoin,
     getJoin,
     getLogin,

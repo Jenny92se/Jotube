@@ -1,6 +1,7 @@
 import {
     videos
 } from "../db"
+import routes from "../routes";
 
 //export const home = (req, res) => res.send("Home");
 export const home = (req, res) => res.render("home", {
@@ -27,12 +28,27 @@ export const videos = (req, res) => res.render("videos", {
     pageTitle: "videos"
 });
 */
-export const upload = (req, res) => {
-    res.render("upload", {
-        pageTitle: "upload2"
 
+export const getUpload = (req, res) => {
+    res.render("upload", {
+        pageTitle: "Upload"
     });
-}
+};
+
+//after uploading video, return generated id-value and load an uploaded video
+export const postUpload = (req, res) => {
+
+    const {
+        body: {
+            file,
+            title,
+            description
+        }
+    } = req;
+    console.log("here");
+    res.redirect(routes.videoDetail(324393));
+};
+
 
 export const videoDetail = (req, res) => res.render("videoDetail", {
     pageTitle: "video Detail"
