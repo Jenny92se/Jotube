@@ -24,6 +24,8 @@ const betweenHome = (req, res, next) => {
 }
 app.use(helmet());
 app.set("view engine", "pug");
+//정적 파일 라우팅
+app.use("/uploads", express.static("uploads"));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(bodyParser.json());
