@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Cloning Youtube with Vanilla and NodeJS",
   "scripts": {
-    "start": "nodemon --exec babel-node init.js --delay 1"
+    "dev:server": "nodemon --exec babel-node init.js --delay 1",
+    "dev:assets": "webpack"
   },
   "author": "Jerry",
   "dependencies": {
@@ -21,6 +22,9 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
   }
 }

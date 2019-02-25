@@ -6,8 +6,11 @@ export const home = async (req, res) => {
     //if attach <async> keword, the function excuting procedual
     //await is only valid in async function
 
+    //sort({_id:-1})  _id를 기준으로 역순정렬
     try {
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({
+            _id: -1
+        });
 
         console.log(videos[0].fileUrl);
         res.render("home", {
@@ -22,17 +25,30 @@ export const home = async (req, res) => {
     }
 };
 
-export const search = (req, res) => {
+export const search = async (req, res) => {
 
     const {
         query: {
             term: searchingBy
         }
     } = req;
+    let videos = [];
+    try {
+        videos = await Video.find({
+            title: {
+                $regex: searchingBy,
+                $options: "i"
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
     //same wigh conset searchingBy=req.query.term;
     res.render("search", {
-        searchingBy
+        pageTitle: "Search",
+        searchingBy,
+        videos
     });
 };
 
