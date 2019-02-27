@@ -110,3 +110,8 @@ const {
 ##autoprefixer
 
 - css 바로 잡아줌
+
+## webpack
+
+"dev:assets": "WEBPACK_ENV=development webpack -w",
+-w를 붙여주면 변할때마다 자동으로 반영해줄것임
