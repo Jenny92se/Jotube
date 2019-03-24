@@ -9,6 +9,9 @@ const UserSchema = new mongoose.Schema({
     githubId: Number
 });
 
+/* passport와 mongoDB를 연결하는 매소드로서
+  자동으로 salt, hash(password를 해쉬해서 생성) 필드를 생성해줌.. */
+
 UserSchema.plugin(passportLocalMongoose, {
     usernameField: "email"
 });

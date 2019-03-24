@@ -115,3 +115,24 @@ const {
 
 "dev:assets": "WEBPACK_ENV=development webpack -w",
 -w를 붙여주면 변할때마다 자동으로 반영해줄것임
+
+## Passport
+
+- socail media를 통해서 사용자 인증을 할 수 있게 해줌
+
+## Passport-Local-Mongoose
+
+- user에 대한 기본적인 모든 것들을 제공함
+
+## randomKeyGen
+
+- https://randomkeygen.com/
+- 암호화를 위한 무작위 값을 설정할때 유용함
+
+## express-session
+
+- 서버에서 세션관리를 도와줌
+
+## connect-mongo
+
+- 세션을 메모리에서 관리할수 있도록 도와줌

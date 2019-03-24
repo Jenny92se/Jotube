@@ -21,11 +21,6 @@ const app = express();
 const cookieStore = MongoStore(session);
 
 //this is middleware
-const betweenHome = (req, res, next) => {
-    console.log("I'm between");
-    next();
-    // if you don't use "next()", the respond will not be reached.
-}
 app.use(helmet());
 app.set("view engine", "pug");
 //정적 파일 라우팅
@@ -58,7 +53,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(localMiddleware);
-console.log(`here test`);
 
 // except for "/user", "/video" routing, it will be affected by this global(default) routing
 app.use(routes.home, globalRouter);

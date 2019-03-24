@@ -8,7 +8,7 @@ const multerVideo = multer({
 export const localMiddleware = (req, res, next) => {
     res.locals.siteName = "Jotube";
     res.locals.routes = routes;
-    res.locals.user = req.user || null;
+    res.locals.loggedUser = req.user || null;
     /* user가 존재하지 않는다면 빈 object를 줌 */
     next();
 };

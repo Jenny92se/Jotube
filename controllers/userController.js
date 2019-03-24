@@ -52,13 +52,82 @@ export const postLogin = passport.authenticate(`local`, {
     successRedirect: routes.home
 });
 
-export const logout = (req, res) => {
+export const githubLogin = passport.authenticate('github');
+
+export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
+    /* 필요없는 변수는 _ 로 처리할수도 있음
+     export const githubLoginCallback = async (_, _, profile, cb) => { */
+    console.log(profile);
+    const {
+        _json: {
+            id,
+            avatar_url,
+            name,
+            email
+        }
+    } = profile;
+    try {
+        const user = await User.findOne({
+            email
+        });
+        console.log("hello origin");
+        console.log(user);
+
+        if (user) {
+            user.githubId = id;
+            user.save();
+            return cb(null, user);
+        }
+        const newUser = await User.create({
+            name: name,
+            email: email,
+            avatarUrl: avatar_url,
+            githubId: id
+        });
+        console.log("hello new");
+        return cb(null, newUser);
+
+    } catch (error) {
+        console.log("error");
+        return cb(error);
+    }
+};
+
+export const postGithubLogin = (req, res) => {
     res.redirect(routes.home);
 };
 
-export const userDetail = (req, res) => res.render("userDetail", {
-    pageTitle: "user detail"
-});
+export const logout = (req, res) => {
+    req.logout();
+    /* passport를 사용해서 이렇게만 해도 로그아웃이 가능 */
+    res.redirect(routes.home);
+};
+
+export const getMe = (req, res) => {
+    res.render("userDetail", {
+        pageTitle: "user detail",
+        user: req.user
+    });
+};
+
+export const userDetail = async (req, res) => {
+
+    const {
+        params: {
+            id
+        }
+    } = req;
+    try {
+        const user = await User.findById(id);
+        res.render("userDetail", {
+            pageTitle: "user detail",
+            user
+        });
+    } catch (error) {
+        res.redirect(routes.home);
+    }
+
+};
 
 export const editProfile = (req, res) => res.render("editProfile", {
     pageTitle: "edit profile"
